@@ -13,7 +13,7 @@ resource "aws_subnet" "subnet1"{
     }
 
 depends_on =  [
-    aws_subnet.vpc_tf  # This is the explicite dependency where it depends on the resource mentionsed "vpc_tf" for its creation.unless the resource is created the "subnet1" resource will not be created.
+    aws_vpc.vpc_tf  # This is the explicite dependency where it depends on the resource mentionsed "vpc_tf" for its creation.unless the resource is created the "subnet1" resource will not be created.
 ]
 }
 resource "aws_subnet" "subnet2"{
@@ -43,7 +43,7 @@ depends_on = [
 }
 
 resource "aws_subnet" "subnet4"{
-    vpd_id = aws_vpc.vpc_tf.id #This is the implicite dependency
+    vpc_id = aws_vpc.vpc_tf.id #This is the implicite dependency
     cidr_block ="10.10.3.0/24"
     availability_zone = "us-west-2a"
     tags = {
@@ -55,7 +55,7 @@ depends_on =[
 ]
 }
 resource "aws_subnet" "subnet5"{
-    vpd_id = aws_vpc.vpc_tf.id #This is the implicite dependency
+    vpc_id = aws_vpc.vpc_tf.id #This is the implicite dependency
     cidr_block = "10.10.4.0/24"
     availability_zone = "us-west-2b"
     tags = {
@@ -67,7 +67,7 @@ depends_on =  [
 ]
 }
 resource "aws_subnet" "subnet6"{
-    vpd_id = aws_vpc.vpc_tf.id #This is the implicite dependency
+    vpc_id = aws_vpc.vpc_tf.id #This is the implicite dependency
     cidr_block ="10.10.5.0/24"
     availability_zone = "us-west-2c"
     tags = {
